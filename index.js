@@ -37,3 +37,7 @@ function move() {
 // Event listener for move button
 moveBtn.addEventListener("click",move)
 
+// Interval for moving the snake every second
+let timerId = setInterval(move, 1000)
+
+// clearInterval(timerId)
