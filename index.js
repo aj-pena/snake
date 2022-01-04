@@ -4,6 +4,7 @@ const moveBtn = document.getElementById('move')
 const score = document.getElementById('score')
 let squares = []
 let currentSnake = [2,1,0]
+let direction = 1
 
 function createGrid() {
     //create 100 of these elements with a for loop
@@ -28,7 +29,7 @@ function move() {
     
     squares[last].classList.remove('snake')
     
-    currentSnake.unshift(currentSnake[0]+1)
+    currentSnake.unshift(currentSnake[0]+direction)
     
     currentSnake.forEach(function(item){squares[item].classList.add('snake')})
     
