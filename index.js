@@ -1,24 +1,38 @@
 const grid = document.querySelector('.grid')
 const startButton = document.getElementById('start')
+const moveBtn = document.getElementById('move')
 const score = document.getElementById('score')
-const squares = []
-let currentSnake = [0,1,2]
-// Function to draw the grid
+let squares = []
+let currentSnake = [2,1,0]
+
 function createGrid() {
-   
+    //create 100 of these elements with a for loop
     for (let i=0; i < 100; i++) {
-    
+     //create element
     const square = document.createElement('div')
-    console.log(square)
-    
+    //add styling to the element
     square.classList.add('square')
-    
+    //put the element into our grid
     grid.appendChild(square)
-       
+    //push it into a new squares array    
     squares.push(square)
     }
-    console.log(squares)
 }
 createGrid()
-// Drawing the initial snake
-currentSnake.forEach(function(item){squares[item].classList.add("snake")})
+
+currentSnake.forEach(index => squares[index].classList.add('snake'))
+
+function move() {
+    //remove last element from our currentSnake array. Pop() removes the last element of an array and returns it.
+    let last = currentSnake.pop()
+    
+    squares[last].classList.remove('snake')
+    
+    currentSnake.unshift(currentSnake[0]+1)
+    
+    currentSnake.forEach(function(item){squares[item].classList.add('snake')})
+    
+}
+// Event listener for move button
+moveBtn.addEventListener("click",move)
+
