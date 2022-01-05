@@ -5,6 +5,7 @@ const score = document.getElementById('score')
 let squares = []
 let currentSnake = [2,1,0]
 let direction = 1
+let width = 10
 
 function createGrid() {
     //create 100 of these elements with a for loop
@@ -35,9 +36,37 @@ function move() {
     
 }
 // Event listener for move button
-moveBtn.addEventListener("click",move)
+moveBtn.addEventListener("click", move)
 
 // Interval for moving the snake every second
 let timerId = setInterval(move, 1000)
 
 // clearInterval(timerId)
+function control(e){
+    switch (e.key){
+        case "Down":
+            direction = width;
+        case "ArrowDown":
+            direction = width;
+            break;
+        case "Up":
+            direction = -width;
+        case "ArrowUp":
+            direction = -width;
+            break;
+        case "Right":
+            direction = 1;
+        case "ArrowRight":
+            direction = 1;
+            break;
+        case "Left":
+            direction = -1;
+        case "ArrowLeft":
+            direction = -1;
+            break;
+        default:
+            return;
+    }
+}
+
+document.addEventListener("keyup", control)
