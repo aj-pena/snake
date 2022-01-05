@@ -47,7 +47,10 @@ function move() {
     if(squares[currentSnake[0]].classList.contains('apple')){
         // remove apple class
         squares[currentSnake[0]].classList.remove('apple')
+        // add snake class to tail
+        squares[last].classList.add('snake')
         // grow snake array
+        currentSnake.push(last)
     }
     
     currentSnake.forEach(function(item){squares[item].classList.add('snake')})
