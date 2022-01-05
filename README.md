@@ -56,7 +56,7 @@ If the snake moves onto itself or touches a wall, the game will stop and your sc
 ## Credits
 
 Teacher:
-- [Ania Kubow](https://github.com/aniakubow)
+- [Ania Kubow](https://github.com/kubowania)
   
 Reference material:
 - [w3schools](https://www.w3schools.com/)
