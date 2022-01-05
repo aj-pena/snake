@@ -1,12 +1,15 @@
 const grid = document.querySelector('.grid')
 const startButton = document.getElementById('start')
 const moveBtn = document.getElementById('move')
-const score = document.getElementById('score')
+const scoreEl = document.getElementById('score')
+let score = 0
 let squares = []
 let currentSnake = [2,1,0]
 let direction = 1
 let width = 10
 let appleIndex = 0
+let intervalTime = 1000
+let speed = 0.9  // will increase speed by decreasing the time it takes for each step
 
 function createGrid() {
     //create 100 of these elements with a for loop
@@ -51,6 +54,16 @@ function move() {
         squares[last].classList.add('snake')
         // grow snake array
         currentSnake.push(last)
+        // generate apple
+        generateApples()
+        // Increase the score
+        score ++
+        // Display the score
+        scoreEl.textContent = score
+        // Speed up the game
+        clearInterval(timerId)
+        intervalTime = intervalTime*speed
+        timerId = setInterval(move, intervalTime)
     }
     
     currentSnake.forEach(function(item){squares[item].classList.add('snake')})
@@ -60,7 +73,7 @@ function move() {
 moveBtn.addEventListener("click", move)
 
 // Interval for moving the snake every second
-let timerId = setInterval(move, 1000)
+let timerId = setInterval(move, intervalTime)
 
 
 function control(e){
