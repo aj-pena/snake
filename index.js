@@ -6,6 +6,7 @@ let squares = []
 let currentSnake = [2,1,0]
 let direction = 1
 let width = 10
+let appleIndex = 0
 
 function createGrid() {
     //create 100 of these elements with a for loop
@@ -51,7 +52,7 @@ moveBtn.addEventListener("click", move)
 // Interval for moving the snake every second
 let timerId = setInterval(move, 1000)
 
-// clearInterval(timerId)
+
 function control(e){
     switch (e.key){
         case "Down":
@@ -80,3 +81,12 @@ function control(e){
 }
 
 document.addEventListener("keydown", control)
+
+function generateApples(){
+    do{
+        appleIndex = Math.floor(Math.random()*101)
+    }
+    while(squares[appleIndex].classList.contains('snake'))
+    squares[appleIndex].classList.add('apple')
+}
+generateApples()
