@@ -27,8 +27,32 @@ function createGrid() {
 createGrid()
 
 function startGame(){
+    // clear any previous interval
+    clearInterval(timerId)
+    // remove the snake
+    currentSnake.forEach(function(item){
+        squares[item].classList.remove('snake')
+    })
+    // remove the apple
+    squares[appleIndex].classList.remove('apple')
+    // reset the game state
+    score = 0
+    currentSnake = [2,1,0]
+    direction = 1
+    appleIndex = 0    
+    intervalTime = 1000
+
+    // reset the displayed score
+    scoreEl.textContent = score
+        
+    
+    // reinsert the snake
+    currentSnake.forEach(function(item){
+        squares[item].classList.add('snake')
+    })
+    // create apple
     generateApples()
-    // Interval for moving the snake every second
+    // move the snake
     timerId = setInterval(move, intervalTime)
 }
 
