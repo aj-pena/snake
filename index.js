@@ -7,8 +7,8 @@ let currentSnake = [2,1,0]
 let direction = 1
 let width = 10
 let appleIndex = 0
-let intervalTime = 1000
-let speed = 0.9  // will increase speed by decreasing the time it takes for each step
+let intervalTime = 500
+let speed = 0.95  // will increase speed by decreasing the time it takes for each step
 let timerId = 0
 
 function createGrid() {
@@ -40,7 +40,7 @@ function startGame(){
     currentSnake = [2,1,0]
     direction = 1
     appleIndex = 0    
-    intervalTime = 1000
+    intervalTime = 500
 
     // reset the displayed score
     scoreEl.textContent = score
