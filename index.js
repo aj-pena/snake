@@ -10,6 +10,7 @@ let width = 10
 let appleIndex = 0
 let intervalTime = 1000
 let speed = 0.9  // will increase speed by decreasing the time it takes for each step
+let timerId = 0
 
 function createGrid() {
     //create 100 of these elements with a for loop
@@ -25,6 +26,12 @@ function createGrid() {
     }
 }
 createGrid()
+
+function startGame(){
+    generateApples()
+    // Interval for moving the snake every second
+    timerId = setInterval(move, intervalTime)
+}
 
 currentSnake.forEach(index => squares[index].classList.add('snake'))
 
@@ -72,8 +79,7 @@ function move() {
 // Event listener for move button
 moveBtn.addEventListener("click", move)
 
-// Interval for moving the snake every second
-let timerId = setInterval(move, intervalTime)
+
 
 
 function control(e){
@@ -103,7 +109,7 @@ function control(e){
     }
 }
 
-document.addEventListener("keydown", control)
+
 
 function generateApples(){
     do{
@@ -112,4 +118,6 @@ function generateApples(){
     while(squares[appleIndex].classList.contains('snake'))
     squares[appleIndex].classList.add('apple')
 }
-generateApples()
+
+document.addEventListener("keydown", control)
+startButton.addEventListener('click', startGame)
