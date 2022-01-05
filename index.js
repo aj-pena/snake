@@ -1,6 +1,5 @@
 const grid = document.querySelector('.grid')
 const startButton = document.getElementById('start')
-const moveBtn = document.getElementById('move')
 const scoreEl = document.getElementById('score')
 let score = 0
 let squares = []
@@ -76,11 +75,6 @@ function move() {
     currentSnake.forEach(function(item){squares[item].classList.add('snake')})
     
 }
-// Event listener for move button
-moveBtn.addEventListener("click", move)
-
-
-
 
 function control(e){
     switch (e.key){
