@@ -42,6 +42,13 @@ function move() {
     squares[last].classList.remove('snake')
     
     currentSnake.unshift(currentSnake[0]+direction)
+
+    // Deal with snake head getting an apple
+    if(squares[currentSnake[0]].classList.contains('apple')){
+        // remove apple class
+        squares[currentSnake[0]].classList.remove('apple')
+        // grow snake array
+    }
     
     currentSnake.forEach(function(item){squares[item].classList.add('snake')})
     
@@ -84,7 +91,7 @@ document.addEventListener("keydown", control)
 
 function generateApples(){
     do{
-        appleIndex = Math.floor(Math.random()*101)
+        appleIndex = Math.floor(Math.random()*squares.length+1)
     }
     while(squares[appleIndex].classList.contains('snake'))
     squares[appleIndex].classList.add('apple')
